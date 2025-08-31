@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cooper Scheble — Portfolio</title>
+  <meta name="description" content="Projects and experience of Cooper Scheble: economics, data analytics, and more." />
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#">CS</a>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌗</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Hi, I'm <span class="accent">Cooper</span>.</h1>
+      <p class="lead">Economics + Data Analytics. I turn messy datasets into decisions — from state finance discrepancies to inventory QA and student outcomes.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="assets/Cooper_Scheble_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="btn outline" href="https://www.linkedin.com/in/cooper-scheble-a6300b2a3/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn outline" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="hero-badges container">
+      <span>Dean’s List (All Semesters)</span>
+      <span>Graduated Cum Laude</span>
+      <span>MDHHS Student Assistant</span>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>NYC Rat Sightings Analysis</h3>
+          <p>Spatial analysis with <strong>R (sf, ggplot2)</strong> mapping density by borough, trends over time, and sanitation correlations.</p>
+          <ul class="tags">
+            <li>R</li><li>GIS</li><li>Data Viz</li>
+          </ul>
+          <div class="links">
+            <a href="#" target="_blank" rel="noopener">Code</a>
+            <a href="#" target="_blank" rel="noopener">Writeup</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Energy Usage Prediction (RECS)</h3>
+          <p>Built Ridge/LASSO models in <strong>R (glmnet)</strong> for <em>TOTALBTU</em>, with cross-validation and error diagnostics.</p>
+          <ul class="tags">
+            <li>R</li><li>ML</li><li>Econometrics</li>
+          </ul>
+          <div class="links">
+            <a href="#" target="_blank" rel="noopener">Code</a>
+            <a href="#" target="_blank" rel="noopener">Report</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Discrepancy Checker for State Finance</h3>
+          <p>Automated cross-system audits to detect <strong>front-end vs back-end</strong> mismatches, with Excel exports and highlights.</p>
+          <ul class="tags">
+            <li>R</li><li>Excel</li><li>Automation</li>
+          </ul>
+          <div class="links">
+            <a href="#" target="_blank" rel="noopener">Code</a>
+            <a href="#" target="_blank" rel="noopener">Demo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section alt">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div>
+          <h4>Data & Tools</h4>
+          <ul>
+            <li>RStudio, tidyverse, ggplot2, sf</li>
+            <li>Python (pandas, numpy)</li>
+            <li>Excel (pivots, lookup, cleaning)</li>
+            <li>Git/GitHub</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Analytics</h4>
+          <ul>
+            <li>Econometrics (Ridge/LASSO)</li>
+            <li>EDA, data cleaning, validation</li>
+            <li>Reconciliation & discrepancy checks</li>
+            <li>Visualization & reporting</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Professional</h4>
+          <ul>
+            <li>QA for inventory/returns workflow</li>
+            <li>Process improvement</li>
+            <li>High-volume customer support</li>
+            <li>Tutoring & peer instruction</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About</h2>
+      <p>I’m an Economics grad with a Quantitative Data Analytics minor. I like hard problems—especially where messy data blocks decisions. Recently: helped MDHHS reconcile back-end vs front-end financial data, and supported K–12 device reclamation with QA and inventory tracking.</p>
+      <p>At MSU, I pursued rigorous, quantitative coursework and kept a 3.9 GPA (Dean’s List every term). I’m now building projects that blend data, policy, and real-world operations.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section alt">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Open to roles in data, policy, or analytics. The fastest way to reach me is email.</p>
+      <ul class="contact">
+        <li>Email: <a href="mailto:cooperscheble@gmail.com">cooperscheble@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/cooper-scheble-a6300b2a3/" target="_blank" rel="noopener">/in/cooper-scheble-a6300b2a3/</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Cooper Scheble. Built with HTML/CSS/JS and hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
