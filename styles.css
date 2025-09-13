@@ -52,7 +52,13 @@ nav a:hover{color:var(--text)}
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  border: 1px solid #ddd;
+  .grid {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
   border-radius: 8px;
   background: #fff;
 }
