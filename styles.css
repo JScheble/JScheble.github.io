@@ -52,6 +52,14 @@ nav a:hover{color:var(--text)}
   flex-direction: column;
   gap: 2.5rem;
 }
+
+@media (min-width: 800px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+  }
+}
 .card {
   display: flex;
   flex-direction: column;
