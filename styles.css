@@ -47,10 +47,17 @@ nav a:hover{color:var(--text)}
 .section.alt{background: var(--bg-alt)}
 .section h2{margin:0 0 22px;font-size:28px}
 
+
 .grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 2.5rem;
+}
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
 }
 
 @media (min-width: 800px) {
