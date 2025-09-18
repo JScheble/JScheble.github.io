@@ -1,3 +1,19 @@
+/* Feature card custom style */
+.card-feature {
+  background: var(--bg-alt);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  padding: 2.5rem 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-feature .card-content {
+  width: 100%;
+}
 
 /* one card per row, edge to edge by default */
 #projects .grid {
