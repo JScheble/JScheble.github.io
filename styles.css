@@ -1,4 +1,4 @@
-/* Feature card custom style */
+/* Feature card — centered text layout, used for projects without a visual */
 .card-feature {
   background: var(--bg-alt);
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
@@ -11,8 +11,20 @@
   margin-left: auto;
   margin-right: auto;
 }
-.card-feature .card-content {
-  width: 100%;
+.card-feature h3 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.card-feature p {
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+.accent-note {
+  color: var(--accent);
+  font-weight: 500;
 }
 
 /* one card per row, edge to edge by default */
@@ -139,13 +151,11 @@ nav a:hover{color:var(--text)}
   }
 }
 
-/* Removed max-width and centering for .grid to allow full stretch */
 .card {
   width: 100%;
   margin: 0;
 }
 
-/* Removed conflicting 800px media queries for .grid */
 .card {
   display: flex;
   flex-direction: column;
@@ -159,8 +169,6 @@ nav a:hover{color:var(--text)}
   margin: 0 0 10px;
   font-size: 1.35rem;
 }
-/* Removed legacy .card .project-graph rules to avoid conflicts with #projects .project-graph */
-.card h3{margin:0 0 8px}
 .tags {
   display: flex;
   flex-wrap: wrap;
