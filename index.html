@@ -8,13 +8,181 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero-badges span {
+      font-size: 0.88rem;
+      padding: 0;
+      border: none;
+      background: none;
+      color: var(--muted);
+    }
+    .hero-badges span + span::before {
+      content: ' · ';
+      margin: 0 4px;
+    }
+
+    /* ── Card redesign: image on top, text below ── */
+    #projects .card {
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: none !important;
+      gap: 0 !important;
+      padding: 0 !important;
+      overflow: hidden;
+      min-height: unset !important;
+      max-width: 1350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #projects .project-graph {
+      width: 100% !important;
+      height: auto !important;
+      max-width: 100% !important;
+      max-height: none !important;
+      aspect-ratio: unset !important;
+      object-fit: unset !important;
+      background: #0b0e12;
+      border-radius: 0 !important;
+      border-bottom: 1px solid var(--border);
+      padding: 16px;
+      display: block;
+    }
+
+    #projects .card-content {
+      padding: 1.25rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    #projects .card h3 {
+      font-size: 1.9rem;
+      margin: 0 0 8px;
+      line-height: 1.3;
+    }
+
+    .card-title-bar {
+      padding: 1.25rem 1.5rem 0.75rem;
+    }
+
+    .card-stat {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+      margin: 0 0 10px;
+    }
+
+    #projects .card p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 12px;
+    }
+
+    #projects .card .tags li {
+      font-size: 0.95rem;
+    }
+
+    #projects .card .links {
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    /* Single column — cards stack vertically, full width */
+    #projects .grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* ── Image Carousel ── */
+    .carousel {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #0b0e12;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    .carousel-track img {
+      width: 100%;
+      flex-shrink: 0;
+      height: 100%;
+      display: block;
+      padding: 16px;
+      border-radius: 0 !important;
+      border-bottom: none !important;
+      object-fit: contain;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(11, 13, 16, 0.72);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s, opacity 0.15s;
+      z-index: 2;
+      opacity: 0.7;
+      padding: 0;
+    }
+    .carousel-btn:hover { background: var(--accent); color: #0b1220; opacity: 1; border-color: var(--accent); }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+    .carousel-btn:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+    .carousel-dots button {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      border: none;
+      background: var(--muted);
+      opacity: 0.4;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity 0.2s, background 0.2s;
+    }
+    .carousel-dots button.active {
+      background: var(--accent);
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#">CS</a>
       <nav>
-        <a href="#projects">Projects</a>
+        <a href="#project-1">Airbnb Law Effects</a>
+        <a href="#project-2">NYC Rat Study</a>
+        <a href="#project-3">Marijuana Legalization Effects</a>
         <a href="#skills">Skills</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -26,60 +194,119 @@
   <section class="hero">
     <div class="container">
       <h1>Hi, I'm <span class="accent">John</span>.</h1>
-      <p class="lead">Economics Graduate (B.S., Minor in Quantitative Data Analytics, GPA 3.9, Cum Laude) with experience in data management, quality assurance, and analytical work across government, education, and private sectors.</p>
+      <p class="lead">I work at the intersection of economics and data — building analyses that connect policy questions to real evidence. Michigan State grad, Economics & Quant Analytics, 3.9 GPA, Cum Laude.</p>
+      <div class="hero-badges" style="margin-bottom: 1.25rem;">
+        <span>Dean’s List (All Semesters)</span>
+        <span>MDHHS Data Analyst</span>
+      </div>
       <div class="cta-row">
   <a class="btn primary" href="#projects">View Projects</a>
   <a class="btn" href="Resume Main.pdf" target="_blank" rel="noopener">Resume</a>
   <a class="btn outline" href="https://www.linkedin.com/in/johnscheble4567/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-    <div class="hero-badges container">
-      <span>Dean’s List (All Semesters)</span>
-      <span>MDHHS Student Assistant</span>
-    </div>
   </section>
 
   <section id="projects" class="section">
     <div class="container">
-      <h2>Selected Projects</h2>
+      <h2 style="text-align:center;">Selected Projects</h2>
       <div class="grid">
-        <article class="card">
-          <img src="ExampleGraphs/airbnb_example.png" alt="Example graph for Airbnb_Rent_Correlation" class="project-graph" />
-          <div class="card-content">
+        <article class="card" id="project-1">
+          <div class="card-title-bar">
             <h3>Does Restricting Airbnb Lower Rents? Estimating Effects from NYC’s Local Law 18</h3>
-            <p>Conducted a <b>difference-in-differences analysis</b> of NYC's <b>Local Law 18</b> — one of the world's strictest short-term rental bans — across <b>82 zip codes</b> from <b>2019–2025</b>, correcting for a <b>parallel trends violation</b> caused by differential gentrification rates. Findings show the law acted as a <b>rent stabilizer</b>, reducing growth by <b>~0.5%</b> per unit of Airbnb intensity, translating to estimated monthly savings of up to <b>$300</b> in high-density neighborhoods like <b>Williamsburg</b>.</p>
+          </div>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <img src="ExampleGraphs/airbnb_example.png"   alt="Airbnb project graph 1" class="project-graph" />
+              <img src="ExampleGraphs/airbnb_example_2.png" alt="Airbnb project graph 2" class="project-graph" />
+              <img src="ExampleGraphs/airbnb_example_3.png" alt="Airbnb project graph 3" class="project-graph" />
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous image">&#8249;</button>
+            <button class="carousel-btn next" aria-label="Next image">&#8250;</button>
+            <div class="carousel-dots">
+              <button class="active" aria-label="Image 1"></button>
+              <button aria-label="Image 2"></button>
+              <button aria-label="Image 3"></button>
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="card-stat">~0.5% rent growth reduction per listing · Up to $300/mo saved · 82 ZIP codes · 2019–2025</p>
+            <p>Difference-in-differences analysis of NYC’s 2023 Airbnb ban, correcting for a parallel trends violation from differential gentrification rates. The law acted as a rent stabilizer — most pronounced in high-density neighborhoods like Williamsburg.</p>
             <ul class="tags">
-              <li>Python</li><li>Jupyter</li><li>DiD</li>
+              <li>Python</li><li>Panel Data</li><li>Difference in Differences</li><li>Policy Evaluation</li><li>Housing Economics</li>
             </ul>
             <div class="links">
-              <a href="https://jscheble.github.io/NYC_AirBnb_Affects/Airbnb_Law_Effect.html" target="_blank" rel="noopener">Click to View Project</a>
+              <a href="https://jscheble.github.io/NYC_AirBnb_Affects/Airbnb_Law_Effect.html" target="_blank" rel="noopener">View Project</a>
+              <a href="https://github.com/JScheble/NYC_AirBnb_Affects" target="_blank" rel="noopener" class="github-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:5px;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                View GitHub
+              </a>
             </div>
           </div>
         </article>
-        <article class="card">
-          <img src="ExampleGraphs/MarijuanaExample.png" alt="Example graph for marijuana project" class="project-graph" />
-          <div class="card-content">
-            <h3>Estimated effects of Marijuana Legalization on Usage Rates</h3>
-            <p>An econometric analysis of U.S. state data using <strong>Difference-in-Differences</strong> and <strong>LASSO regression</strong> to evaluate the causal and predictive impact of legalization. Found a ~6% increase in adult usage with no significant change among teens.</p>
-            <ul class="tags">
-              <li>R</li><li>GIS</li><li>Data Viz</li>
-            </ul>
-            <div class="links">
-              <a href="https://jscheble.github.io/Marijuana_Legalization_Effects/analysis.html" target="_blank" rel="noopener">Code</a>
-              <a href="https://jscheble.github.io/Marijuana_Legalization_Effects/analysisnocode.html" target="_blank" rel="noopener">No Code</a>
-            </div>
-          </div>
-        </article>
-        <article class="card">
-          <img src="ExampleGraphs/ExampleGraphRat.png" alt="Example graph for rat sightings project" class="project-graph" />
-          <div class="card-content">
+        <article class="card" id="project-2">
+          <div class="card-title-bar">
             <h3>Urban Density and Rat Sightings: Evidence from NYC Zip Codes</h3>
-            <p>Report exploring 311 rat sighting reports by ZIP code, linking complaints to population, income, and area to get <strong>density-adjusted rates.</strong> Goal is to work with sightings per 1000 residents and population density to compare neighborhoods fairly.</p>
+          </div>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <img src="ExampleGraphs/rat_example.png"   alt="Rat sightings graph 1" class="project-graph" />
+              <img src="ExampleGraphs/rat_example_2.png" alt="Rat sightings graph 2" class="project-graph" />
+              <img src="ExampleGraphs/rat_example_3.png" alt="Rat sightings graph 3" class="project-graph" />
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous image">&#8249;</button>
+            <button class="carousel-btn next" aria-label="Next image">&#8250;</button>
+            <div class="carousel-dots">
+              <button class="active" aria-label="Image 1"></button>
+              <button aria-label="Image 2"></button>
+              <button aria-label="Image 3"></button>
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="card-stat">311 complaint data · Density-adjusted rates · ZIP-level geospatial analysis</p>
+            <p>Linked NYC rat sighting complaints to population, income, and area to surface density-adjusted rates — revealing which neighborhoods face disproportionate infestations when controlling for size and demographics.</p>
             <ul class="tags">
-              <li>R</li><li>ML</li><li>Econometrics</li>
+              <li>R</li><li>SQL</li><li>ggplot2</li><li>Geospatial Analysis</li><li>Urban Analytics</li>
             </ul>
             <div class="links">
-              <a href="https://jscheble.github.io/NYC_Rat_Sighting_Analysis/Rat_Analysis.html" target="_blank" rel="noopener">Click to View Project</a>
+              <a href="https://jscheble.github.io/NYC_Rat_Sighting_Analysis/Rat_Analysis.html" target="_blank" rel="noopener">View Project</a>
+              <a href="https://github.com/JScheble/NYC_Rat_Sighting_Analysis" target="_blank" rel="noopener" class="github-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:5px;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                View GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="card" id="project-3">
+          <div class="card-title-bar">
+            <h3>Effects of Marijuana Legalization on Usage Rates</h3>
+          </div>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <img src="ExampleGraphs/teen_example.png"   alt="Marijuana project graph 1" class="project-graph" />
+              <img src="ExampleGraphs/teen_example_2.png" alt="Marijuana project graph 2" class="project-graph" />
+              <img src="ExampleGraphs/teen_example_3.png" alt="Marijuana project graph 3" class="project-graph" />
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous image">&#8249;</button>
+            <button class="carousel-btn next" aria-label="Next image">&#8250;</button>
+            <div class="carousel-dots">
+              <button class="active" aria-label="Image 1"></button>
+              <button aria-label="Image 2"></button>
+              <button aria-label="Image 3"></button>
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="card-stat">~6% adult usage increase · No significant teen effect · U.S. state panel data</p>
+            <p>DiD and LASSO regression analysis across U.S. states to isolate the causal impact of legalization. Adult usage rose meaningfully post-legalization while teen rates remained statistically unchanged.</p>
+            <ul class="tags">
+              <li>R</li><li>DiD</li><li>LASSO</li><li>GIS</li><li>Data Viz</li>
+            </ul>
+            <div class="links">
+              <a href="https://jscheble.github.io/Marijuana_Legalization_Effects/analysis.html" target="_blank" rel="noopener">View Project</a>
+              <a href="https://github.com/JScheble/Marijuana_Legalization_Effects" target="_blank" rel="noopener" class="github-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:5px;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                View GitHub
+              </a>
             </div>
           </div>
         </article>
@@ -152,5 +379,29 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('[data-carousel]').forEach(carousel => {
+      const track  = carousel.querySelector('.carousel-track');
+      const slides = track.querySelectorAll('img');
+      const dots   = carousel.querySelectorAll('.carousel-dots button');
+      const prev   = carousel.querySelector('.carousel-btn.prev');
+      const next   = carousel.querySelector('.carousel-btn.next');
+      let current  = 0;
+
+      function goTo(idx) {
+        current = idx;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        prev.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+      }
+
+      prev.addEventListener('click', () => goTo(current - 1));
+      next.addEventListener('click', () => goTo(current + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+      goTo(0); // initialise state
+    });
+  </script>
 </body>
 </html>
